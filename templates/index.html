@@ -1,0 +1,24 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender</title>
+</head>
+<body>
+    <h1>Book Recommendation System</h1>
+    <form action="/recommend" method="POST">
+        <label for="title">Enter a Book Title:</label>
+        <input type="text" id="title" name="title" required>
+        <input type="submit" value="Recommend">
+    </form>
+    {% if recommendations %}
+        <h2>Recommendations:</h2>
+        <ul>
+            {% for book in recommendations %}
+                <li>{{ book }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
