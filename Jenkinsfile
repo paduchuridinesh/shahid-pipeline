@@ -9,16 +9,12 @@ pipeline {
         }
         stage('Build Docker image') {
             steps {
-                script {
-                    docker.build('book-recommender')
-                }
+                bat 'docker build -t book-recommender .'
             }
         }
         stage('Run Container') {
             steps {
-                script {
-                    docker.image('book-recommender').run('-p 5000:5000')
-                }
+                bat 'docker run -d --name book-recommender-container -p 5000:5000 book-recommender'
             }
         }
     }
